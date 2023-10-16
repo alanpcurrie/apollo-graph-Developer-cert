@@ -1,0 +1,15 @@
+{
+  "scripts": {
+    "start-router": "node scripts/start-router.js",
+    "publish-locations": "node scripts/publish-locations.js",
+    "publish-reviews": "node scripts/publish-reviews.js",
+    "publish-all": "npm run publish-locations && npm run publish-reviews"
+  },
+  "devDependencies": {
+    "dotenv-cli": "^7.3.0",
+    "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "dotenv": "^16.3.1"
+  }
+}

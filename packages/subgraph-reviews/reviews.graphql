@@ -1,0 +1,35 @@
+extend schema @link(url: "https://specs.apollo.dev/federation/v2.0", import: ["@key"])
+
+type Query {
+  latestReviews: [Review!]!
+}
+
+type Review {
+  id: ID!
+  comment: String
+  rating: Int
+  location: Location
+}
+
+type Location @key(fields: "id") {
+  id: ID!
+  overallRating: Float
+  reviewsForLocation: [Review]!
+}
+
+type Mutation {
+  submitReview(locationReview: LocationReviewInput): SubmitReviewResponse
+}
+
+input LocationReviewInput {
+  comment: String!
+  rating: Int!
+  locationId: String!
+}
+
+type SubmitReviewResponse {
+  code: Int!
+  success: Boolean!
+  message: String!
+  locationReview: Review
+}
